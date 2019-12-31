@@ -1,0 +1,18 @@
+---
+- hosts: zero
+  become: yes
+  tasks:
+    - name: remove unnecessary packages
+      apt:
+        pkg:
+          - avahi-daemon
+          - htop
+          - iw
+          - nano
+          - ncdu
+          - pi-bluetooth
+          - wpasupplicant
+        state: absent
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
