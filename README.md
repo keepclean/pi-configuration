@@ -2,12 +2,19 @@
 
 ## Command examples
 
+Inventory file is defined in `ansible.cfg` file.
+
 Ping
 ```sh
-ansible --inventory=inventory  pi -m ping
+ansible pi -m ping
 ```
 
-Run playbook to remove unnecessary packages
+Dry-run site wide playbook 
 ```sh
-ansible-playbook --inventory=inventory remove-debs.yaml
+ansible-playbook --check diff site.yaml
+```
+
+Dry-run pi zero specific runbook
+```sh
+ansible-playbook --check diff zero.yaml
 ```
