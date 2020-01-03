@@ -1,0 +1,14 @@
+[Match]
+MACAddress=7c:c3:a1:87:cd:27
+
+[Network]
+Address=192.168.1.4
+Gateway=192.168.1.254
+DNS=1.0.0.1
+DNS=2606:4700:4700::1001
+DNSSEC=allow-downgrade
+
+DHCP=ipv6
+
+[DHCP]
+UseDNS=false

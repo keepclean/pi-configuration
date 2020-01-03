@@ -18,3 +18,15 @@
   apt:
     autoremove: yes
     autoclean: yes
+
+- name: enable systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd
+    state: started
+    enabled: yes
+
+- name: enable systemd-networkd
+  systemd:
+    name: systemd-networkd
+    state: started
+    enabled: yes

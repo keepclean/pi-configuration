@@ -1,4 +1,8 @@
 ---
+- name: set hostname
+  hostname:
+    name: zero
+
 - name: remove unnecessary packages
   apt:
     pkg:
@@ -7,3 +11,9 @@
       - wpasupplicant
     state: absent
     purge: yes
+
+- name: copy network config
+  copy:
+    src: etc/systemd/network/zero-ethernet.network
+    dest: /etc/systemd/network/zero-ethernet.network
+    mode: 0644
