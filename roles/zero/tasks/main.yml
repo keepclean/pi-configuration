@@ -1,0 +1,9 @@
+---
+- name: remove unnecessary packages
+  apt:
+    pkg:
+      - iw
+      - pi-bluetooth
+      - wpasupplicant
+    state: absent
+    purge: yes

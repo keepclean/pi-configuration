@@ -1,0 +1,20 @@
+---
+- name: remove unnecessary packages
+  apt:
+    pkg:
+      - avahi-daemon
+      - htop
+      - nano
+      - ncdu
+    state: absent
+    purge: yes
+
+- name: update apt cache and do safe upgrade
+  apt:
+    update_cache: yes
+    upgrade: safe
+
+- name: common apt housekeeping
+  apt:
+    autoremove: yes
+    autoclean: yes
