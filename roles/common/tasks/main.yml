@@ -30,3 +30,13 @@
     name: systemd-networkd
     state: started
     enabled: yes
+
+- name: ssh file in boot folder
+  file:
+    path: /boot/ssh
+    state: touch
+
+- name: /etc/hosts file
+  template:
+    src: etc/hosts.j2
+    dest: /etc/hosts

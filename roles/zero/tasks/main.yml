@@ -12,8 +12,25 @@
     state: absent
     purge: yes
 
+- name: copy hw config
+  copy:
+    src: boot/config.txt
+    dest: /boot/config.txt
+
 - name: copy network config
   copy:
     src: etc/systemd/network/zero-ethernet.network
     dest: /etc/systemd/network/zero-ethernet.network
+    mode: 0644
+
+- name: copy lighttpd external config
+  copy:
+    src: etc/lighttpd/external.conf
+    dest: /etc/lighttpd/external.conf
+    mode: 0644
+
+- name: copy lighttpd fastcgi-php config
+  copy:
+    src: etc/lighttpd/conf-available/15-fastcgi-php.conf
+    dest: /etc/lighttpd/conf-available/15-fastcgi-php.conf
     mode: 0644
