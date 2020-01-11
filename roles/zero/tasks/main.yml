@@ -9,8 +9,13 @@
       - iw
       - pi-bluetooth
       - wpasupplicant
+      - wireless-tools
+      - rfkill
+      - firmware-atheros
+      - firmware-brcm80211
+      - firmware-libertas
     state: absent
-    purge: yes
+    purge: "yes"
 
 - name: copy hw config
   copy:
@@ -34,3 +39,26 @@
     src: etc/lighttpd/conf-available/15-fastcgi-php.conf
     dest: /etc/lighttpd/conf-available/15-fastcgi-php.conf
     mode: 0644
+
+- name: copy pihole update gravity timer
+  copy:
+    src: etc/systemd/system/pihole-update-gravity.timer
+    dest: /etc/systemd/system/pihole-update-gravity.timer
+    mode: 0644
+
+- name: copy pihole update gravity service
+  copy:
+    src: etc/systemd/system/pihole-update-gravity.service
+    dest: /etc/systemd/system/pihole-update-gravity.service
+    mode: 0644
+
+- name: enable pihole update gravity timer
+  systemd:
+    name: pihole-update-gravity.timer
+    state: started
+    enabled: "yes"
+
+- name: enable pihole update gravity service
+  systemd:
+    name: pihole-update-gravity.service
+    enabled: "yes"

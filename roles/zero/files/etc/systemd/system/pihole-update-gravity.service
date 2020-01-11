@@ -1,0 +1,7 @@
+[Unit]
+Description=Update pihole ads datasources
+After=network.target network-online.target systemd-networkd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/pihole updateGravity
