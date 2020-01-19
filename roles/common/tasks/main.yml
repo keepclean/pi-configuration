@@ -7,34 +7,35 @@
       - nano
       - ncdu
     state: absent
-    purge: yes
+    purge: "yes"
 
 - name: update apt cache and do safe upgrade
   apt:
-    update_cache: yes
+    update_cache: "yes"
     upgrade: safe
 
 - name: common apt housekeeping
   apt:
-    autoremove: yes
-    autoclean: yes
+    autoremove: "yes"
+    autoclean: "yes"
 
 - name: enable systemd-timesyncd
   systemd:
     name: systemd-timesyncd
     state: started
-    enabled: yes
+    enabled: "yes"
 
 - name: enable systemd-networkd
   systemd:
     name: systemd-networkd
     state: started
-    enabled: yes
+    enabled: "yes"
 
-- name: ssh file in boot folder
-  file:
-    path: /boot/ssh
-    state: touch
+- name: enable ssh service
+  systemd:
+    name: ssh.service
+    state: started
+    enabled: "yes"
 
 - name: /etc/hosts file
   template:
