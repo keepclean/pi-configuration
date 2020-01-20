@@ -62,3 +62,18 @@
   systemd:
     name: pihole-update-gravity.service
     enabled: "yes"
+
+- name: disable console keyboard setup service
+  systemd:
+    name: keyboard-setup.service
+    enabled: "no"
+
+- name: disable rc-local service
+  systemd:
+    name: rc-local.service
+    enabled: "no"
+
+- name: disable nfs-config service
+  systemd:
+    name: nfs-config.service
+    enabled: "no"
