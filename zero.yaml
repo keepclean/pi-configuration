@@ -1,6 +1,6 @@
 ---
 - hosts: zero
-  become: yes
+  become: "yes"
   roles:
     - zero
     - common
