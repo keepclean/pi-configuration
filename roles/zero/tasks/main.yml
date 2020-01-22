@@ -3,19 +3,7 @@
   hostname:
     name: zero
 
-- name: remove unnecessary packages
-  apt:
-    pkg:
-      - iw
-      - pi-bluetooth
-      - wpasupplicant
-      - wireless-tools
-      - rfkill
-      - firmware-atheros
-      - firmware-brcm80211
-      - firmware-libertas
-    state: absent
-    purge: "yes"
+- import_tasks: remove-unnecessary-packages.yaml
 
 - name: copy hw config
   copy:
