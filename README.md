@@ -1,4 +1,4 @@
-# pi-zero
+# pi-configuration
 
 ## Command examples
 
@@ -11,10 +11,9 @@ ansible pi -m ping
 
 Dry-run site wide playbook 
 ```sh
-ansible-playbook --check diff site.yaml
+ansible-playbook --check --diff site.yaml
 ```
 
-Dry-run pi zero specific runbook
+Dry-run pi zero specific playbook
 ```sh
-ansible-playbook --check diff zero.yaml
-```
+ansible-playbook --check --diff zero.yaml
