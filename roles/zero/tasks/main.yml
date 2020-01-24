@@ -3,8 +3,6 @@
   hostname:
     name: zero
 
-- import_tasks: remove-unnecessary-packages.yaml
-
 - name: copy hw config
   copy:
     src: boot/config.txt
@@ -16,52 +14,6 @@
     dest: /etc/systemd/network/zero-ethernet.network
     mode: 0644
 
-- name: copy lighttpd external config
-  copy:
-    src: etc/lighttpd/external.conf
-    dest: /etc/lighttpd/external.conf
-    mode: 0644
-
-- name: copy lighttpd fastcgi-php config
-  copy:
-    src: etc/lighttpd/conf-available/15-fastcgi-php.conf
-    dest: /etc/lighttpd/conf-available/15-fastcgi-php.conf
-    mode: 0644
-
-- name: copy pihole update gravity timer
-  copy:
-    src: etc/systemd/system/pihole-update-gravity.timer
-    dest: /etc/systemd/system/pihole-update-gravity.timer
-    mode: 0644
-
-- name: copy pihole update gravity service
-  copy:
-    src: etc/systemd/system/pihole-update-gravity.service
-    dest: /etc/systemd/system/pihole-update-gravity.service
-    mode: 0644
-
-- name: enable pihole update gravity timer
-  systemd:
-    name: pihole-update-gravity.timer
-    state: started
-    enabled: "yes"
-
-- name: enable pihole update gravity service
-  systemd:
-    name: pihole-update-gravity.service
-    enabled: "yes"
-
-- name: disable console keyboard setup service
-  systemd:
-    name: keyboard-setup.service
-    enabled: "no"
-
-- name: disable rc-local service
-  systemd:
-    name: rc-local.service
-    enabled: "no"
-
-- name: disable nfs-config service
-  systemd:
-    name: nfs-config.service
-    enabled: "no"
+- import_tasks: remove-unnecessary-packages.yaml
+- import_tasks: pihole-services.yaml
+- import_tasks: disable-services.yaml
